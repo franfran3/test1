@@ -2,12 +2,13 @@
 
 namespace Test;
 
-class Test 
+class Test
 {
 
     public $member;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->member = 'Hello';
     }
 
@@ -16,8 +17,8 @@ class Test
         return new static;
     }
 
-    public function get() 
-    { 
-        return hello; 
+    public function get()
+    {
+        return hello;
     }
 }
