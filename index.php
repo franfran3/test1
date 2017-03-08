@@ -2,18 +2,22 @@
 
 namespace Test;
 
-class Test {
+class Test 
+{
 
     public $member;
 
-    function __construct() {
+    public function __construct() {
         $this->member = 'Hello';
     }
 
-    static public function factory()
+    public static function factory()
     {
         return new static;
     }
 
-    function get() { return hello; }
+    public function get() 
+    { 
+        return hello; 
+    }
 }
