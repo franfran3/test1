@@ -1,0 +1,21 @@
+machine:
+    php:
+        version: 7.1.0
+
+dependencies:
+    post:
+        - |
+         cd .. ; \
+         git clone https://github.com/EdgedesignCZ/phpqa.git &&
+         cd phpqa &&
+         composer install --no-dev &&
+         ./bin/suggested-tools.sh install &&
+         sudo ln -s $(pwd)/../phpqa/phpqa /usr/bin/phpqa
+
+test:
+    override:
+        - phpqa --report --tools phpmetrics,phpcs:0,phpmd:0,phpcpd:0,pdepend,phploc,parallel-lint:0,phpstan --buildDir=var/QA
+    post:
+        - cp -r ./var/QA $CIRCLE_ARTIFACTS/QA
+
+
