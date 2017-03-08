@@ -3,17 +3,18 @@ machine:
         version: 7.1.0
 
 dependencies:
-    pre:
+    post:
         - |
-         cd /tmp ; \
-         git clone https://github.com/EdgedesignCZ/phpqa.git ;
-         cd phpqa ;
-         composer install --no-dev ;
-         sudo ln -s /tmp/phpqa/phpqa /usr/bin/phpqa
+         cd .. ; \
+         git clone https://github.com/EdgedesignCZ/phpqa.git &&
+         cd phpqa &&
+         composer install --no-dev &&
+         ./bin/suggested-tools.sh install &&
+         sudo ln -s ../phpqa/phpqa /usr/bin/phpqa
 
 test:
     override:
-        - phpqa --report --tools phpcs:0,phpmd:0,phpcpd:0,pdepend,phploc --buildDir=var/QA
+        - phpqa --report --tools phpcs:0,phpmd:0,phpcpd:0,pdepend,phploc,parallel-lint:0,phpstan --buildDir=var/QA
     post:
         - cp -r ./var/QA $CIRCLE_ARTIFACTS/QA
 
