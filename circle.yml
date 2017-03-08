@@ -13,7 +13,7 @@ dependencies:
 
 test:
     override:
-        - phpqa --report --tools phpcs:0,phpmd:0,phpcd:0 --buildDir=var/QA
+        - phpqa --report --tools phpcs:0,phpmd:0,phpcpd:0,pdepend,phploc --buildDir=var/QA
     post:
         - cp -r ./var/QA $CIRCLE_ARTIFACTS/QA
 
