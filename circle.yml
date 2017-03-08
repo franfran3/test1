@@ -10,7 +10,7 @@ dependencies:
          cd phpqa &&
          composer install --no-dev &&
          ./bin/suggested-tools.sh install &&
-         sudo ln -s ../phpqa/phpqa /usr/bin/phpqa
+         sudo ln -s $(pwd)/../phpqa/phpqa /usr/bin/phpqa
 
 test:
     override:
