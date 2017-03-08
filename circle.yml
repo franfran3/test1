@@ -4,9 +4,9 @@ machine:
 
 dependencies:
     pre:
-		- |
-		 cd /tmp ; \
-		 git clone https://github.com/EdgedesignCZ/phpqa.git ;
+        - |
+         cd /tmp ; \
+         git clone https://github.com/EdgedesignCZ/phpqa.git ;
          cd phpqa ;
          composer install --no-dev ;
          sudo ln -s /tmp/phpqa/phpqa /usr/bin/phpqa
