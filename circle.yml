@@ -1,0 +1,18 @@
+machine:
+    php:
+        version: 7.1.0
+
+dependencies:
+    pre:
+		- |
+		 cd /tmp ; \
+		 git clone https://github.com/EdgedesignCZ/phpqa.git ;
+         cd phpqa ;
+         composer install --no-dev ;
+         sudo ln -s /tmp/phpqa/phpqa /usr/bin/phpqa
+
+test:
+    override:
+        - phpqa --report --tools phpcs:0,phpmd:0,phpcd:0
+
+
